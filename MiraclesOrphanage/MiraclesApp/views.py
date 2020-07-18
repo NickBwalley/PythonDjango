@@ -5,6 +5,6 @@ from django.http import HttpResponse
 def hello(request):
     return render(request, 'MiraclesApp/homepage.html')
 
-def registration(request):
-    response = redirect('Registration')
+def login(request):
+    response = redirect('MiraclesApp/Login.html')
     return response

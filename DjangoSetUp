@@ -18,8 +18,10 @@ Linux OS:
 	$ django-admin version
 	
 # create a django project
-	$ django-admin startproject projectname # creates a new django project
+	$ django-admin startproject "projectname" # creates a new django project
 
 # run server
 	$ python3 manage.py runserver
-	
+
+# create an app inside your project
+	$ python3 manage.py startapp "appname"	

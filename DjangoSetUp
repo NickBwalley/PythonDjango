@@ -17,4 +17,9 @@ Linux OS:
 # confirm installation
 	$ django-admin version
 	
+# create a django project
+	$ django-admin startproject projectname # creates a new django project
+
+# run server
+	$ python3 manage.py runserver
 	

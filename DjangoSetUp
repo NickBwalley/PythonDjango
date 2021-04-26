@@ -1,0 +1,20 @@
+Linux OS:
+----------------------
+# Check in your terminal to make sure you have this packages installed:
+	$ python3 --version
+	$ pip3 --version
+	$ django-admin --version
+	
+# Install virtualenv wrapper
+	$ pip3 install virtualenvwrapper-win
+	
+# create the virtual environment
+	$ mkdir virtualenv test
+
+# install django
+	$ pip3 install django
+	$ sudo apt install python3-django
+# confirm installation
+	$ django-admin version
+	
+	

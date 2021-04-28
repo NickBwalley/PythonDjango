@@ -25,3 +25,6 @@ Linux OS:
 
 # create an app inside your project
 	$ python3 manage.py startapp "appname"	
+	
+# collect static files from 'static' to 'assets'
+	$ python3 manage.py collectstatic

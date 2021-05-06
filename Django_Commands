@@ -28,3 +28,12 @@ Linux OS:
 	
 # collect static files from 'static' to 'assets'
 	$ python3 manage.py collectstatic
+	
+# manage migrations
+	$ python3 manage.py migrate
+
+# create user
+	$ python3 manage.py createsuperuser
+
+# Interactive shell 
+	$ python3 manage.py shell

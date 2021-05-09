@@ -52,7 +52,7 @@ def create_order(request, pk):
             return redirect('/')
 
     context = {'formset':formset}
-    return render(request, 'accounts/order_form.html', context)
+    return render(request, 'accounts/create_order.html', context)
 
 
 def update_order(request, pk):

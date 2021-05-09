@@ -4,6 +4,7 @@ from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # create your views here
 from .models import *
@@ -49,7 +50,7 @@ def logout_user(request):
 
 
 
-
+@login_required(login_url='login')
 def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()

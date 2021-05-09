@@ -68,13 +68,14 @@ def home(request):
     return render(request, 'accounts/dashboard.html', context)
 
 
-
+@login_required(login_url='login')
 def products(request):
     products = Product.objects.all()
 
     return render(request, 'accounts/products.html', {'products': products})
 
 
+@login_required(login_url='login')
 def customer(request, pk_test):
     customer = Customer.objects.get(id=pk_test)
     orders = customer.order_set.all()
@@ -89,7 +90,7 @@ def customer(request, pk_test):
 
     return render(request, 'accounts/customer.html', context)
 
-
+@login_required(login_url='login')   
 def create_order(request, pk):
     OrderFormSet = inlineformset_factory(Customer, Order, fields=('product', 'status'), extra=10)
     customer = Customer.objects.get(id=pk)
@@ -107,6 +108,7 @@ def create_order(request, pk):
     return render(request, 'accounts/create_order.html', context)
 
 
+@login_required(login_url='login')
 def update_order(request, pk):
     
     order = Order.objects.get(id=pk)    
@@ -123,6 +125,7 @@ def update_order(request, pk):
     return render(request, 'accounts/order_form.html', context)
 
 
+@login_required(login_url='login')
 def delete_order(request, pk):
     order = Order.objects.get(id=pk)
     context = {'item': order}

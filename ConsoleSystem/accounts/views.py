@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import OrderForm, CreateUserForm
 from .filters import OrderFilter
+from .decorators import unauthenticated_user
 
 def register_page(request):
     if request.user.is_authenticated:
@@ -28,25 +29,22 @@ def register_page(request):
         context = {'form':form} 
         return render(request, 'accounts/register.html', context)
 
-
+@unauthenticated_user
 def login_page(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:    
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-            user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username, password=password)
 
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.info(request, 'Incorrect Username or Password! ')
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, 'Incorrect Username or Password! ')
 
-        context = {}
-        return render(request, 'accounts/login.html', context)
+    context = {}
+    return render(request, 'accounts/login.html', context)
 
 
 def logout_user(request):
@@ -72,6 +70,10 @@ def home(request):
     }    
     return render(request, 'accounts/dashboard.html', context)
 
+
+def user_page(request):
+    context = {}
+    return render (request, 'accounts/user.html', context)    
 
 @login_required(login_url='login')
 def products(request):
